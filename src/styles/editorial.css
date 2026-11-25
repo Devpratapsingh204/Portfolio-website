@@ -1,0 +1,300 @@
+/* ==========================================================================
+   EDITORIAL MASONRY LAYOUT & VISUAL STORYTELLING CARDS
+   ========================================================================== */
+
+.project-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--bg-glass-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: var(--text-accent);
+  color: var(--text-main);
+}
+
+/* Editorial Grid Layout */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+}
+
+/* Featured Large Project - Spans 12 columns */
+.project-card.featured-large {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  min-height: 480px;
+}
+
+/* Featured Split Projects - Span 6 columns each */
+.project-card.featured-half {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Secondary Projects - Span 4 columns each */
+.project-card.secondary-third {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .project-card.featured-large {
+    grid-template-columns: 1fr;
+  }
+  .project-card.featured-half {
+    grid-column: span 12;
+  }
+  .project-card.secondary-third {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-card.secondary-third {
+    grid-column: span 12;
+  }
+}
+
+/* General Project Card Container */
+.project-card {
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  overflow: hidden;
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.project-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  transform: translateY(-4px);
+}
+
+/* Visual Storytelling Cover Area */
+.project-visual-cover {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  border-bottom: 1px solid var(--bg-glass-border);
+}
+
+.project-card.featured-large .project-visual-cover {
+  border-bottom: none;
+  border-right: 1px solid var(--bg-glass-border);
+}
+
+@media (max-width: 1024px) {
+  .project-card.featured-large .project-visual-cover {
+    border-right: none;
+    border-bottom: 1px solid var(--bg-glass-border);
+  }
+}
+
+/* Project Story Content Area */
+.project-info {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.project-badge-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-category-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+.project-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bg-glass-border);
+}
+
+/* ==========================================================================
+   CASE STUDY DRAWER MODAL & CERTIFICATE LIGHTBOX
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 7, 17, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-glass-border);
+  border-radius: var(--radius-lg);
+  max-width: 850px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-container {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.case-study-header {
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  border-bottom: 1px solid var(--bg-glass-border);
+}
+
+.case-study-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.case-study-body {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.case-study-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.case-study-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.case-study-text {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.case-study-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-study-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-muted);
+}
+
+.case-study-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--text-accent);
+}
