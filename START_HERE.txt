@@ -1,0 +1,15 @@
+DEV PRATAP SINGH PORTFOLIO
+
+1. Extract the ZIP.
+2. Open the extracted folder in VS Code.
+3. Open a terminal in the folder.
+4. Run: npm install
+5. Run: npm run dev
+6. Open the localhost URL printed by Vite.
+
+Production check:
+- npm run build
+- npm run preview
+
+The certificate images and CV are already included.
+The site uses HTML + CSS + JavaScript with Vite.
